@@ -80,7 +80,7 @@ Single header that includes all the above in the correct order.
 ucoro::Task<void> blink_led() {
     while (true) {
         led.toggle();
-        co_yield std::suspend_always{};
+        yield();
     }
 }
 
@@ -91,4 +91,30 @@ int main() {
         delay_ms(500);
     }
 }
+```
+
+### 2. yield / yield_timeout macros
+```cpp
+#include "coro_macro.h"
+
+// Wait until flag == true, suspending once per iteration
+void ucoro::Task<void> wait_flag() {
+    bool timed_out = false;
+
+    // no args  → co_yield_now()
+    yield();
+
+    // one   arg → co_yield_until(flag)
+    yield(some_flag);
+
+    // two   args → co_yield_until(flag, std::suspend_always{})
+    yield(some_flag, std::suspend_always{});
+
+    // timeout: wait up to 1000ms, set timed_out
+    yield_timeout(some_flag, 1000, timed_out);
+    if (timed_out) {
+        // handle timeout
+    }
+}
+
 ```
