@@ -131,4 +131,28 @@ void ucoro::Task<void> wait_flag() {
     }
 }
 
+
+```
+
+### 3. Event-Based Waiting
+```cpp
+#include "coro_event.h"
+
+ucoro::Task<void> wait_for_button() {
+    co_await make_event_awaiter<ButtonPressedEvent>();
+    led.turn_on();
+}
+```
+### 4. Protothread Integration
+```cpp
+#include "Protothread.h"
+
+void sensor_handler() {
+    PT_BEGIN();
+    while (!sensor.ready()) {
+        PT_WAIT_UNTIL(sensor.event_triggered());
+    }
+    process_data();
+    PT_END();
+}
 ```
