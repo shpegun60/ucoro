@@ -36,9 +36,7 @@ Include only `u_coro.h` for full access to the library:
 ```cpp
 #include "u_coro.h"
 
-
-
-
+```
 ---
 
 ## 📝 File summaries
