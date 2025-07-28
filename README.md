@@ -1,32 +1,33 @@
 # uCoro: Lightweight C++20 Coroutine Framework for Embedded Systems
 
-https://img.shields.io/badge/C++-20-blue.svg
-https://img.shields.io/badge/license-MIT-green.svg
-https://img.shields.io/badge/header--only-true-blueviolet.svg
-
 A lightweight header-only C++20 coroutine framework optimized for embedded systems with minimal overhead and manual scheduling control.
-
-A lightweight, header‑only C++20 coroutine framework for embedded systems.  
 It provides:
 - Manual scheduling (`Task` + `.resume()`)  
 - Event‑based `co_await` awaitables  
 - `yield()` / `yield_timeout()` macros for compact suspension loops  
 - Timeout support, policies, and protothread‑style helpers  
-
+Features
+- 🚀 Manual scheduling with explicit .resume() control
+- ⏱️ Timeout support for operations with configurable policies
+- 🔄 Protothread-style helpers for synchronous workflows
+- 📊 Event-based awaitables for interrupt-driven architectures
+- 📦 Zero dynamic allocations in core operations
+- 🧩 Policy-based design for customizable behavior
+- 🧠 Compact macros for common suspension patterns
 ---
 
-## 📂 Repository layout
+## 📂 Repository Structure
 
 ucoro/
-├── InstantCoroutine.h — one‐shot coroutine helper
-├── Instantthread.h — protothread wrapper for synchronous callbacks
-├── Protothread.h — “classic” protothreads API
-├── coro_event.h — event subscription awaitable
-├── coro_macro.h — yield(), yield_until(), yield_timeout(), co_pause_forever() macros
-├── coro_policy.h — policy definitions (e.g. NoBlockPolicy, TimeoutPolicy)
-├── coro_promise.h — promise_type implementations (templated on TaskT, Policy)
-├── coro_task.h — Task<T,Policy> + TaskBase<> boilerplate
-└── u_coro.h — user‑facing includes and forward declarations
+├── InstantCoroutine.h     // One-shot coroutine helper
+├── Instantthread.h        // Protothread wrapper for callbacks
+├── Protothread.h          // Classic protothreads implementation
+├── coro_event.h           // Event subscription awaitables
+├── coro_macro.h           // Yield macros for suspension loops
+├── coro_policy.h          // Behavior policy definitions
+├── coro_promise.h         // Promise type implementations
+├── coro_task.h            // Task and TaskBase implementations
+└── u_coro.h               // Main include header
 
 
 ---
