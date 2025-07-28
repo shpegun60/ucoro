@@ -1,4 +1,9 @@
-# ucoro
+#uCoro: Lightweight C++20 Coroutine Framework for Embedded Systems
+https://img.shields.io/badge/C++-20-blue.svg
+https://img.shields.io/badge/license-MIT-green.svg
+https://img.shields.io/badge/header--only-true-blueviolet.svg
+
+A lightweight header-only C++20 coroutine framework optimized for embedded systems with minimal overhead and manual scheduling control.
 
 A lightweight, header‑only C++20 coroutine framework for embedded systems.  
 It provides:
