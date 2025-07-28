@@ -16,18 +16,27 @@ Features
 - 🧠 Compact macros for common suspension patterns
 ---
 
-## 📂 Repository Structure
+## 📂 Repository structure
 
-ucoro/
-├── InstantCoroutine.h     // One-shot coroutine helper
-├── Instantthread.h        // Protothread wrapper for callbacks
-├── Protothread.h          // Classic protothreads implementation
-├── coro_event.h           // Event subscription awaitables
-├── coro_macro.h           // Yield macros for suspension loops
-├── coro_policy.h          // Behavior policy definitions
-├── coro_promise.h         // Promise type implementations
-├── coro_task.h            // Task and TaskBase implementations
-└── u_coro.h               // Main include header
+The `ucoro/` folder contains all the core components of the library:
+
+### File Descriptions
+
+- **`InstantCoroutine.h`** — Launches a coroutine once without heap allocation. Fire-and-forget usage.
+- **`Instantthread.h`** — Lightweight wrapper to treat a callback-like function as a resumable "thread".
+- **`Protothread.h`** — Minimal protothread system using macros, inspired by Adam Dunkels' protothreads.
+- **`coro_event.h`** — Awaitable event system: provides `make_event_awaiter<T>()` to suspend on events.
+- **`coro_macro.h`** — A collection of coroutine macros like `yield()`, `yield_timeout()`, and infinite suspension helpers.
+- **`coro_policy.h`** — Policy classes for blocking, timeouts, and atomic flag handling.
+- **`coro_promise.h`** — Core coroutine `promise_type` implementations, wired with policy and task logic.
+- **`coro_task.h`** — Defines the `Task<T, Policy>` interface with resume, state tracking, and value access.
+- **`u_coro.h`** — Master include header that pulls in everything in correct order.
+
+Include only `u_coro.h` for full access to the library:
+```cpp
+#include "u_coro.h"
+
+
 
 
 ---
